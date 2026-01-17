@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>ยืมตังหน่อย</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  /* ส่วนพื้นหลังและจัดกลาง */
+  body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: Arial, sans-serif;
+      overflow-x: hidden; /* ป้องกันกล่องล้นด้านขวา */
+  }
+
+  /* การ์ดกลาง */
+  .card {
+      background: #fff;
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      width: 300px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  }
+
+  h1 {
+      color: #ff4d6d;
+      margin-bottom: 15px;
+  }
+
+  /* รูป */
+  .pic {
+      width: 150px;       /* กว้างปรับได้ */
+      height: auto;       /* รักษาอัตราส่วน */
+      border-radius: 15px; /* มุมโค้ง */
+      margin-bottom: 15px; /* เว้นระยะจากข้อความ */
+  }
+
+  /* ปุ่ม */
+  .buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+  }
+
+  button {
+      border: none;
+      border-radius: 15px;
+      padding: 15px;
+      font-size: 16px;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+  }
+
+  #yes {
+      background: #ff4d6d;
+      width: 120px;
+  }
+
+  #no {
+      background: #ff8fab;
+      width: 120px;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <h1>ยืมตังหน่อย 20 บาท 💸</h1>
+
+    <!-- ใส่รูปตรงนี้ -->
+    <img src="https://cdn.discordapp.com/attachments/1404045468895285319/1462043789408473138/a6be664a9fd7b0f2e1ec9adebbc76172.jpg?ex=696cc1e2&is=696b7062&hm=12c187bb6ba9d44c6c09ea8aea41d7b4ddb6f6d0c7210a749957f800773e56e8&" class="pic">
+
+    <div class="buttons">
+        <button id="yes">ให้ยืม</button>
+        <button id="no">ไม่ให้ยืม</button>
+    </div>
+</div>
+
+<script>
+    let noCount = 0;
+    const yesBtn = document.getElementById("yes");
+    const noBtn = document.getElementById("no");
+
+    noBtn.addEventListener("click", () => {
+        noCount++;
+
+        // ปรับขนาดปุ่มตามจำนวนครั้งกดไม่ให้ยืม
+        yesBtn.style.width = (120 + noCount * 25) + "px";
+        noBtn.style.width = Math.max(50, 120 - noCount * 20) + "px";
+
+        // ครบ 5 ครั้ง
+        if (noCount >= 5) {
+            noBtn.style.display = "none";
+            yesBtn.style.width = "220px";
+            yesBtn.style.fontSize = "20px";
+        }
+    });
+
+    yesBtn.addEventListener("click", () => {
+        alert("ขอบคุณจ้าา 😆💖");
+    });
+</script>
+
+</body>
+</html>
